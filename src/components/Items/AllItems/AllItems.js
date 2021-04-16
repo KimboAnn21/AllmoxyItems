@@ -1,13 +1,21 @@
 import classes from './AllItems.module.css';
 import ItemForm from './ItemForm';
+import { useContext } from 'react';
+import CartContext from '../../store/CartContext';
 
 const AllItems = props => {
-    const price = `$${props.price.toFixed(0)}`;
+    const cartCtx = useContext(CartContext);
+const price = `$${props.price.toFixed(0)}`;
 
-    const addItemToCartHandler = amount => {
+const addItemToCartHandler = amount => {
+    cartCtx.addItem({
+        id: props.id,
+        name: props.name,
+        amount: amount,
+        price: props.price
+    })
 
-    }
-
+}
     return (
     <li className={classes.item}>
         <div>
