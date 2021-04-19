@@ -1,18 +1,17 @@
 import { useEffect, useState } from 'react';
-//import AllItems from '../Items/AllItems/AllItems';
 import Card from '../UI/Card';
 import Items from './Items';
 import classes from './ItemsAvailable.module.css';
 
 const ItemsAvailable = () => {
-  const [Items, setItems] = useState([]);
+  const [items, setItems] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [httpError, setHttpError] = useState();
 
   useEffect(() => {
     const fetchItems = async () => {
       const response = await fetch(
-        'https://allmoxy-grid-default-rtdb.firebaseio.com/items.json'
+        'https://allmoxy-grid-default-rtdb.firebaseio.com/Items.json'
       );
 
       if (!response.ok) {
@@ -44,7 +43,7 @@ const ItemsAvailable = () => {
 
   if (isLoading) {
     return (
-      <section className={classes.ItemsLoading}>
+      <section className={classes.itemsLoading}>
         <p>Loading...</p>
       </section>
     );
@@ -52,26 +51,26 @@ const ItemsAvailable = () => {
 
   if (httpError) {
     return (
-      <section className={classes.ItemsError}>
+      <section className={classes.itemsError}>
         <p>{httpError}</p>
       </section>
     );
   }
 
-  const ItemsList = Items.map((meal) => (
+  const itemsList = items.map((item) => (
     <Items
-      key={meal.id}
-      id={meal.id}
-      name={meal.name}
-      description={meal.description}
-      price={meal.price}
+      key={item.id}
+      id={item.id}
+      name={item.name}
+      description={item.description}
+      price={item.price}
     />
   ));
 
   return (
-    <section className={classes.Items}>
+    <section className={classes.items}>
       <Card>
-        <ul>{ItemsList}</ul>
+        <ul>{itemsList}</ul>
       </Card>
     </section>
   );

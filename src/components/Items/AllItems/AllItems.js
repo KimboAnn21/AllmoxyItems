@@ -4,8 +4,9 @@ import { useContext } from 'react';
 import CartContext from '../../store/CartContext';
 
 const AllItems = props => {
-    const cartCtx = useContext(CartContext);
-const price = `$${props.price.toFixed(0)}`;
+const cartCtx = useContext(CartContext);
+
+const price = `$${props.price.toFixed(2)}`;
 
 const addItemToCartHandler = amount => {
     cartCtx.addItem({
@@ -21,8 +22,8 @@ const addItemToCartHandler = amount => {
         <div>
             <h3>{props.name}</h3>
             <div className={classes.description}>{props.description}</div>
-            <div className={classes.price}>{props.price}</div>
-            <div className={classes.image}>{props.image}</div>
+            <div className={classes.price}>{price}</div>
+            <div className={classes.image}>{image}</div>
         </div>
         <div>
             <ItemForm onAddToCart={addItemToCartHandler}/>

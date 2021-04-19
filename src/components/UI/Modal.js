@@ -14,12 +14,15 @@ const ModalOverlay = props => {
     )
 }
 const portalElement = document.getElementById('Overlays');
-//ReactDOM.Fragment breaks the Modal and I am not sure why.  
-const Modal = props => {
+ 
+const Modal = (props) => {
     return (
     <Fragment>
-    <Backdrop onClose={props.onClose}/>
-    <ModalOverlay>{props.children}</ModalOverlay>
+    {ReactDOM.createPortal(<Backdrop onClose={props.onClose}/>, portalElement)}
+    {ReactDOM.createPortal(
+        <ModalOverlay>{props.children}</ModalOverlay>, portalElement
+    )}
+    
     </Fragment>
     )  
 }

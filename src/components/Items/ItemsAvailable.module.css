@@ -10,6 +10,15 @@
     margin: 0;
     padding: 0;
   }
+  .itemsLoading {
+    text-align: center;
+    color: white;
+  }
+  
+  .itemsError {
+    text-align: center;
+    color: red;
+  }
 
   .img {
     border: 1px solid #ddd;
