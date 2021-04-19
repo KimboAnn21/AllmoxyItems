@@ -13,7 +13,8 @@ const addItemToCartHandler = amount => {
         id: props.id,
         name: props.name,
         amount: amount,
-        price: props.price
+        price: props.price,
+        image: props.image
     })
 
 }
@@ -23,7 +24,7 @@ const addItemToCartHandler = amount => {
             <h3>{props.name}</h3>
             <div className={classes.description}>{props.description}</div>
             <div className={classes.price}>{price}</div>
-            <div className={classes.image}>{image}</div>
+            <div className={classes.image}>{props.image}</div>
         </div>
         <div>
             <ItemForm onAddToCart={addItemToCartHandler}/>

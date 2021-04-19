@@ -11,7 +11,7 @@ const ItemsAvailable = () => {
   useEffect(() => {
     const fetchItems = async () => {
       const response = await fetch(
-        'https://allmoxy-grid-default-rtdb.firebaseio.com/Items.json'
+        'https://allmoxy-grid-default-rtdb.firebaseio.com/items.json'
       );
 
       if (!response.ok) {
@@ -28,6 +28,7 @@ const ItemsAvailable = () => {
           name: responseData[key].name,
           description: responseData[key].description,
           price: responseData[key].price,
+          image: responseData[key].image
         });
       }
 
@@ -64,6 +65,7 @@ const ItemsAvailable = () => {
       name={item.name}
       description={item.description}
       price={item.price}
+      image={item.image}
     />
   ));
 

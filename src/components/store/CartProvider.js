@@ -23,18 +23,23 @@ if (existingCartItem) {
     amount: existingCartItem.amount + action.item.amount
 }
     updatedItems = [...state.items];
-    updatedItems[existingCartItemIndex] = updatedItem;
+    updatedItem[existingCartItemIndex] = updatedItem;
 } else {
-    updatedItems = state.items.concat();
+    updatedItems = state.items.concat(action.item);
 }
     return {
         items: updatedItems,
         totalAmount: updatedTotalAmount,
     }
 }
+if (action.type === 'CLEAR'){
     return defaultCartState;
 }
+return defaultCartState
+}
+
 //dispatch to reducer
+
 const CartProvider = (props) => {
   const [cartState, dispatchCartAction] = useReducer(cartReducer, defaultCartState)
 //dispatch ADD action and forward item
