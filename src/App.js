@@ -1,9 +1,8 @@
 import { useState } from 'react';
-import './App.css';
 import Header from './components/Layout/Header';
 import Cart from './components/Cart/Cart';
 import CartProvider from './components/store/CartProvider';
-import Items from './components/Items/Items';
+import AllItems from './components/Items/AllItems/AllItems';
 
 function App() {
   const [cartIsShown, setCartIsShown] = useState(false);
@@ -19,7 +18,7 @@ function App() {
       {cartIsShown && <Cart onClose={hideCartHandler} />}
         <Header onShowCart={showCartHandler}/>
           <main>
-            <Items />
+            <AllItems />
           </main>
     </CartProvider>
   );

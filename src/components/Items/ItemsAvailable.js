@@ -1,13 +1,14 @@
 import { useEffect, useState } from 'react';
+
 import Card from '../UI/Card';
-import Items from './Items';
 import classes from './ItemsAvailable.module.css';
+import AllItems from './AllItems/AllItems';
 
 const ItemsAvailable = () => {
   const [items, setItems] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [httpError, setHttpError] = useState();
-
+  
   useEffect(() => {
     const fetchItems = async () => {
       const response = await fetch(
@@ -15,7 +16,7 @@ const ItemsAvailable = () => {
       );
 
       if (!response.ok) {
-        throw new Error('Oops!');
+        throw new Error('Uh oh!');
       }
 
       const responseData = await response.json();
@@ -28,7 +29,6 @@ const ItemsAvailable = () => {
           name: responseData[key].name,
           description: responseData[key].description,
           price: responseData[key].price,
-          image: responseData[key].image
         });
       }
 
@@ -44,7 +44,7 @@ const ItemsAvailable = () => {
 
   if (isLoading) {
     return (
-      <section className={classes.itemsLoading}>
+      <section className={classes.ItemsLoading}>
         <p>Loading...</p>
       </section>
     );
@@ -52,20 +52,19 @@ const ItemsAvailable = () => {
 
   if (httpError) {
     return (
-      <section className={classes.itemsError}>
+      <section className={classes.ItemsError}>
         <p>{httpError}</p>
       </section>
     );
   }
 
   const itemsList = items.map((item) => (
-    <Items
+    <AllItems
       key={item.id}
       id={item.id}
       name={item.name}
       description={item.description}
       price={item.price}
-      image={item.image}
     />
   ));
 

@@ -3,18 +3,17 @@ import ItemForm from './ItemForm';
 import { useContext } from 'react';
 import CartContext from '../../store/CartContext';
 
-const AllItems = props => {
+const AllItems = (props) => {
 const cartCtx = useContext(CartContext);
 
-const price = `$${props.price.toFixed(2)}`;
+const price = `$${props.price}`;
 
-const addItemToCartHandler = amount => {
+const addToCartHandler = amount => {
     cartCtx.addItem({
         id: props.id,
         name: props.name,
         amount: amount,
         price: props.price,
-        image: props.image
     })
 
 }
@@ -27,7 +26,7 @@ const addItemToCartHandler = amount => {
             <div className={classes.image}>{props.image}</div>
         </div>
         <div>
-            <ItemForm onAddToCart={addItemToCartHandler}/>
+            <ItemForm onAddToCart={addToCartHandler}/>
         </div>
     </li>
     )

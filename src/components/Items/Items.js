@@ -4,8 +4,8 @@ import ItemSummary from "./ItemSummary"
 
 const Items = () => {
     return <Fragment>
-        <ItemSummary />
-        <ItemsAvailable />
-    </Fragment>
+                <ItemSummary />
+                <ItemsAvailable />
+            </Fragment>
 }
 export default Items;

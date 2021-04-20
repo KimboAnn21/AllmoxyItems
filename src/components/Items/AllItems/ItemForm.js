@@ -12,6 +12,7 @@ const ItemForm = (props) => {
 const enteredAmount = amountInputRef.current.value;
 const enteredAmountNumber = +enteredAmount;
 
+//.trim to remove white space plus validation
 if (
     enteredAmount.trim().length === 0 ||
     enteredAmountNumber < 1 || 
